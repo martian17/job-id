@@ -2,12 +2,21 @@
   "name": "job-id",
   "version": "1.0.1",
   "description": "generates unique numeric ids that are freeable",
-  "main": "index.js",
+  "main": "job-id.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "martian17",
-  "license": "MIT"
+  "license": "MIT",
+  "sitory": {
+    "type": "git",
+    "url": "git+https://github.com/martian17/job-id.git"
+  },
+  "keywords": [
+    "id", "unique", "queue", "task", "job"
+  ],
+  "bugs": {
+    "url": "https://github.com/martian17/job-id/issues"
+  },
+  "homepage": "https://github.com/martian17/job-id#readme"
 }
-
-
