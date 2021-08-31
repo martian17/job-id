@@ -1,11 +1,13 @@
 {
   "name": "job-id",
   "version": "1.0.0",
-  "description": "",
+  "description": "generates unique numeric ids that are freeable",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "martian17",
+  "license": "MIT"
 }
+
+
