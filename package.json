@@ -1,6 +1,6 @@
 {
   "name": "job-id",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "generates unique numeric ids that are freeable",
   "main": "index.js",
   "scripts": {
