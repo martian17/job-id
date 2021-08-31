@@ -32,4 +32,4 @@ let ID = (new function(){
     };
 }());
 
-
+module.exports = ID;
