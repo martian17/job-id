@@ -1,3 +1,5 @@
+
+//picked it up from C haha
 const FREE = 0;
 const USED = 1;
 
