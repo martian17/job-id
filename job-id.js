@@ -35,8 +35,11 @@ let ID = function(){
             for(i; i >= 0; i--){
                 let node = arr[i];
                 if(node.state == FREE){
+                    //console.log(node);
+                    //console.log(free);
                     let next = node.next;
                     let prev = node.prev;
+                    if(node === free)free = free.next;
                     if(next !== null)next.prev = prev;
                     if(prev !== null)prev.next = next;
                     //node gets garbage collected
@@ -44,11 +47,13 @@ let ID = function(){
                     break;
                 }
             }
+            //console.log(free);
             arr.length = i+1;//freeing up the array memory
         }else{
             let node = arr[id];
             node.next = free;
             node.prev = null;
+            if(free !== null)free.prev = node;
             free = node;
         }
     };
