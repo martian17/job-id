@@ -19,7 +19,7 @@ let ID = function(){
             arr.push(free);
         }
         let node = free;
-        console.log(free);
+        //console.log(free);
         node.state = USED;
         if(tail === free){
             free = null;
@@ -37,7 +37,7 @@ let ID = function(){
             console.log("warning, the given id is not under use");
             return false;
         }
-        console.log(free);
+        //console.log(free);
         arr[id].state = FREE;
         if(id === max){//perform memory reclaimation
             let i = max;
