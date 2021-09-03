@@ -1,60 +1,40 @@
-const FREE = 0;
-const USED = 1;
+const pqueue = require("./p-queue.js");
+
+const USED = 0;
 
 
 let ID = function(){
-    let free = null;
-    
     let arr = [];
+    let free = new pqueue(arr);
+    
     this.get = function(){
-        if(free === null){
-            free = {
-                id:arr.length,
-                next:null,
-                prev:null,
-                state:FREE
-            };
-            arr.push(free);
+        if(free.arr.length === 1){//queue empty
+            let id = arr.length;
+            arr.push(USED);
+            return id;//common case fast
         }
-        let node = free;
-        free = free.next;
-        if(free !== null)free.prev = null;
-        node.state = USED;
-        return node.id;
+        let id = free.pop();
+        return id;
     };
-    this.free = function(id){
+    this.free = function(id){//logn
         let max = arr.length-1;
-        if(id > max || arr[id].state === FREE){
+        if(id > max || arr[id] !== USED){
             //coulda returned an error
             console.log("warning, the given id is not under use");
             return false;
         }
-        arr[id].state = FREE;
         if(id === max){//perform memory reclaimation
-            let i = max;
+            let i = max-1;
             for(i; i >= 0; i--){
-                let node = arr[i];
-                if(node.state == FREE){
-                    //console.log(node);
-                    //console.log(free);
-                    let next = node.next;
-                    let prev = node.prev;
-                    if(node === free)free = free.next;
-                    if(next !== null)next.prev = prev;
-                    if(prev !== null)prev.next = next;
-                    //node gets garbage collected
+                if(arr[i] !== USED){
+                    free.delete(i);
+                    arr.pop();
                 }else{
                     break;
                 }
             }
-            //console.log(free);
-            arr.length = i+1;//freeing up the array memory
         }else{
-            let node = arr[id];
-            node.next = free;
-            node.prev = null;
-            if(free !== null)free.prev = node;
-            free = node;
+            free.insert(id)
         }
     };
 };
